@@ -5,41 +5,80 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Task10._2_Wpf"
         mc:Ignorable="d"
-        Title="DavidBowie" MinHeight="800" MinWidth="1200" Height="800" Width="1200">
+        Title="DavidBowie" WindowStartupLocation="CenterScreen" Style="{StaticResource WindowStyle}">
 
     <Window.Background>
         <ImageBrush ImageSource="Data/cosmos.jpg" Stretch="Fill" RenderOptions.BitmapScalingMode="HighQuality"/>
     </Window.Background>
 
-    <Window.Resources>
-        <Style TargetType="Button">
-            <Style.Triggers>
-                <EventTrigger RoutedEvent="Click">
-                    <EventTrigger.Actions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetProperty="Width" Duration="0:0:1" To="120" AutoReverse="True"/>
-                                <DoubleAnimation Storyboard.TargetProperty="Height" Duration="0:0:1" To="160" AutoReverse="True"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger.Actions>
-                </EventTrigger>
-            </Style.Triggers>
-        </Style>
-    </Window.Resources>
-
-    <Canvas MinHeight="800" MinWidth="1200" Height="800" Width="1200">
+    <Canvas Style="{StaticResource CanvasStyle}">
         <Canvas.Background>
             <ImageBrush Stretch="Uniform"/>
         </Canvas.Background>
-        <Image Source="Data/space+oddity+ep+cover.jpg" Opacity="0.1" MinHeight="800" MinWidth="1200" 
-               RenderOptions.BitmapScalingMode="HighQuality" Width="1184"/>
+        <Border Width="120" Height="116" Style="{StaticResource BorderStyle}" Canvas.Left="541" Canvas.Top="722" RenderTransformOrigin="0.5,0.5">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1" ScaleX="1"/>
+                    <SkewTransform AngleY="0" AngleX="0"/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform Y="-150"/>
+                </TransformGroup>
+            </Border.RenderTransform>
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" Opacity="0.65">
+                    <GradientStop Color="#FF15157C" Offset="0"/>
+                    <GradientStop Color="#FFB48FD6" Offset="0.5"/>
+                    <GradientStop Color="#FFCCEE86" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Image x:Name="myDavidBowie1" Source="Data/david_bowie_2.jpg" Width="110" Height="110" 
+                Style="{StaticResource ImageStyle}" Opacity="0.65" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="1" ScaleX="1"/>
+                        <SkewTransform AngleY="0" AngleX="0"/>
+                        <RotateTransform Angle="0"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Border>
+        <Border Width="120" Height="115" Style="{StaticResource BorderStyle}" Canvas.Left="541" Canvas.Top="607" RenderTransformOrigin="0.5,0.5">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1" ScaleX="1"/>
+                    <SkewTransform AngleY="0" AngleX="0"/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform Y="-150"/>
+                </TransformGroup>
+            </Border.RenderTransform>
+            <Border.Background>
+                <VisualBrush Visual="{Binding ElementName=myDavidBowie2}">
+                    <VisualBrush.Transform>
+                        <ScaleTransform ScaleX="1" ScaleY="-1" CenterX="0" CenterY="57.6"/>
+                    </VisualBrush.Transform>
+                </VisualBrush>
+            </Border.Background>
+            <Border.OpacityMask>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Offset="0" Color="#FFC07272"/>
+                    <GradientStop Offset="0.9" Color="Transparent"/>
+                </LinearGradientBrush>
+            </Border.OpacityMask>
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1" Opacity="0.65">
+                    <GradientStop Color="#FFCCEE86" Offset="0"/>
+                    <GradientStop Color="#FFB48FD6" Offset="0.5"/>
+                    <GradientStop Color="#FF15157C" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+        </Border>
+        <Image Source="Data/space+oddity+ep+cover.jpg" MinHeight="800" MinWidth="1200" 
+               Width="1185" Height="1085" Opacity="0.1" Style="{StaticResource ImageStyle}"/>
 
-        <StackPanel MinHeight="800" MinWidth="1200">
+        <StackPanel Style="{StaticResource StackPanelStyle}">
 
-            <Border Height="190" Width="205" BorderThickness="5" VerticalAlignment="Center">
-                <Image x:Name="myDavidBowie" Source="Data/david_bowie.jpg" 
-                   Width="195" Height="180" RenderOptions.BitmapScalingMode="HighQuality"/>
+            <Border Height="190" Width="205" Style="{StaticResource BorderStyle}">
                 <Border.BorderBrush>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                         <GradientStop Color="Red" Offset="0"/>
@@ -47,9 +86,11 @@
                         <GradientStop Color="YellowGreen" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.BorderBrush>
+                <Image x:Name="myDavidBowie" Source="Data/david_bowie.jpg" Opacity="1"
+                       Width="195" Height="180" Style="{StaticResource ImageStyle}"/>
             </Border>
 
-            <Border Height="190" Width="205" BorderThickness="5" VerticalAlignment="Center">
+            <Border Height="190" Width="205" Style="{StaticResource BorderStyle}">
                 <Border.Background>
                     <VisualBrush Visual="{Binding ElementName=myDavidBowie}">
                         <VisualBrush.Transform>
@@ -72,9 +113,7 @@
                 </Border.BorderBrush>
             </Border>
 
-            <Border Width="120" Height="115" BorderThickness="5" VerticalAlignment="Center">
-                <Image x:Name="myDavidBowie2" Source="Data/david_bowie_2.jpg" Width="110" Height="110"
-                   RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Center" Opacity="0.45"/>
+            <Border Width="120" Height="115" Style="{StaticResource BorderStyle}">
                 <Border.RenderTransform>
                     <TranslateTransform X="0" Y="-150"/>
                 </Border.RenderTransform>
@@ -85,9 +124,11 @@
                         <GradientStop Color="#FFCCEE86" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.BorderBrush>
+                <Image x:Name="myDavidBowie2" Source="Data/david_bowie_2.jpg" Width="110" Height="110" 
+                       Style="{StaticResource ImageStyle}" Opacity="0.65"/>
             </Border>
 
-            <Border Width="120" Height="115" BorderThickness="5" VerticalAlignment="Center">
+            <Border Width="120" Height="115" Style="{StaticResource BorderStyle}">
                 <Border.RenderTransform>
                     <TranslateTransform X="0" Y="-150"/>
                 </Border.RenderTransform>
@@ -113,12 +154,9 @@
                 </Border.BorderBrush>
             </Border>
 
-            <Border Width="300" Height="150" BorderThickness="5" VerticalAlignment="Center">
-                <Image x:Name="myDavidBowie3" Source="Data/david_bowie_3.jpg" Width="330" Height="170"
-                   RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Center" Opacity="0.75"/>
+            <Border Width="300" Height="150" Style="{StaticResource BorderStyle}">
                 <Border.Effect>
-                    <DropShadowEffect Color="#FFB1D124" Direction="40" ShadowDepth="20"
-                                  Opacity="0.4"/>
+                    <DropShadowEffect Color="#FFB1D124" Direction="40" ShadowDepth="20" Opacity="0.4"/>
                 </Border.Effect>
                 <Border.RenderTransform>
                     <TransformGroup>
@@ -132,14 +170,15 @@
                         <GradientStop Color="#FF5A5FCE" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.BorderBrush>
+                <Image x:Name="myDavidBowie3" Source="Data/david_bowie_3.jpg" Width="300" Height="165" 
+                       Style="{StaticResource ImageStyle}" Opacity="0.85"/>
             </Border>
 
-            <Border Width="300" Height="150" BorderThickness="5" VerticalAlignment="Center">
+            <Border Width="300" Height="150" Style="{StaticResource BorderStyle}">
                 <Border.Background>
                     <VisualBrush Visual="{Binding ElementName=myDavidBowie3}">
                         <VisualBrush.Transform>
-                            <ScaleTransform ScaleX="1" ScaleY="-1" CenterX="100" CenterY="70">
-                            </ScaleTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="-1" CenterX="100" CenterY="70"/>
                         </VisualBrush.Transform>
                     </VisualBrush>
                 </Border.Background>
@@ -156,17 +195,14 @@
                     </TransformGroup>
                 </Border.RenderTransform>
             </Border>
+            
 
-            <Border Width="300" Height="150" BorderThickness="5" VerticalAlignment="Center">
-                <Image x:Name="myDavidBowie4" Source="Data/david_bowie_4.jpg" Width="460" Height="200"
-                   RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Center" Opacity="0.75"/>
+
+            <Border Width="300" Height="150" Style="{StaticResource BorderStyle}">
                 <Border.Effect>
-                    <DropShadowEffect Color="#FF68E1E4" Direction="130" ShadowDepth="20"
-                                  Opacity="0.4"/>
+                    <DropShadowEffect Color="#FF68E1E4" Direction="130" 
+                                      ShadowDepth="20" Opacity="0.4"/>
                 </Border.Effect>
-                <Border.Background>
-                    <VisualBrush TileMode="FlipXY"/>
-                </Border.Background>
                 <Border.RenderTransform>
                     <TransformGroup>
                         <MatrixTransform Matrix="0.9 -0.3 -0.04 1 300 -600"/>
@@ -179,14 +215,15 @@
                         <GradientStop Color="#FF5A5FCE" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.BorderBrush>
+                <Image x:Name="myDavidBowie4" Source="Data/david_bowie_4.jpg" Width="290" Height="165"
+                       Style="{StaticResource ImageStyle}" Opacity="0.85"/>
             </Border>
 
-            <Border Width="300" Height="150" BorderThickness="5" VerticalAlignment="Center">
+            <Border Width="300" Height="150" Style="{StaticResource BorderStyle}">
                 <Border.Background>
-                    <VisualBrush Visual="{Binding ElementName=myDavidBowie4}" TileMode="Tile">
+                    <VisualBrush Visual="{Binding ElementName=myDavidBowie4}">
                         <VisualBrush.Transform>
-                            <ScaleTransform ScaleX="1" ScaleY="-1" CenterX="-100" CenterY="70">
-                            </ScaleTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="-1" CenterX="-100" CenterY="70"/>
                         </VisualBrush.Transform>
                     </VisualBrush>
                 </Border.Background>
@@ -204,7 +241,7 @@
                 </Border.RenderTransform>
             </Border>
 
-            <Rectangle Height="180" Width="1200" Opacity="0.6" RadiusX="5" RadiusY="5" StrokeThickness="8">
+            <Rectangle Style="{StaticResource RectangleStyle}">
                 <Rectangle.Stroke>
                     <RadialGradientBrush>
                         <GradientStop Color="Black" Offset="0"/>
@@ -232,83 +269,67 @@
                 </Rectangle.RenderTransform>
             </Rectangle>
 
-            <UniformGrid Height="200" Width="1200" Columns="5" >
+            <UniformGrid Style="{StaticResource UniformGridStyle}">
                 <UniformGrid.RenderTransform>
                     <TranslateTransform X="0" Y="-855"/>
                 </UniformGrid.RenderTransform>
 
-                <Button Height="140" Width="105" BorderThickness="5" VerticalAlignment="Center">
-                    <Image x:Name="myMJ" Source="Data/michael_jackson.jpeg" 
-                   Height="130" Width="100" RenderOptions.BitmapScalingMode="HighQuality" Opacity="0.5"/>
-                    <Button.BorderBrush>
-                        <SolidColorBrush Color="AliceBlue" Opacity="0.65">
-                        </SolidColorBrush>
-                    </Button.BorderBrush>
+                <Button Style="{StaticResource ButtonStyle}">
                     <Button.RenderTransform>
                         <TransformGroup>
                             <TranslateTransform X="100" Y="60"/>
                             <ScaleTransform ScaleX="0.9" ScaleY="0.9"/>
                         </TransformGroup>
                     </Button.RenderTransform>
+                    <Image x:Name="myMJ" Source="Data/michael_jackson.jpeg" Style="{StaticResource ImageStyle}"/>
                 </Button>
 
-                <Button Height="140" Width="105" BorderThickness="5" VerticalAlignment="Center">
-                    <Image x:Name="myRS" Source="Data/rolling-stones.jpg" 
-                   Height="130" Width="100" RenderOptions.BitmapScalingMode="HighQuality" Opacity="0.5"/>
-                    <Button.BorderBrush>
-                        <SolidColorBrush Color="AliceBlue" Opacity="0.5">
-                        </SolidColorBrush>
-                    </Button.BorderBrush>
+                <Button Style="{StaticResource ButtonStyle}">
                     <Button.RenderTransform>
                         <TransformGroup>
                             <TranslateTransform X="70" Y="60"/>
                             <ScaleTransform ScaleX="0.9" ScaleY="0.9"/>
                         </TransformGroup>
                     </Button.RenderTransform>
+                    <Image x:Name="myRS" Source="Data/rolling-stones.jpg" Style="{StaticResource ImageStyle}"/>
                 </Button>
 
-                <Button Height="140" Width="105" BorderThickness="5" VerticalAlignment="Center">
-                    <Image x:Name="myDB" Source="Data/david_bowie_2.jpg" 
-                   Height="130" Width="100" RenderOptions.BitmapScalingMode="HighQuality"/>
-                    <Button.BorderBrush>
-                        <SolidColorBrush Color="AliceBlue">
-                        </SolidColorBrush>
-                    </Button.BorderBrush>
+                <Button Style="{StaticResource ButtonStyle}">
                     <Button.RenderTransform>
                         <TranslateTransform X="0" Y="50"/>
                     </Button.RenderTransform>
+                    <Image x:Name="myDB" Source="Data/david_bowie_2.jpg" Opacity="1" Style="{StaticResource ImageStyle}"/>
                 </Button>
 
-                <Button Height="140" Width="105" BorderThickness="5" VerticalAlignment="Center">
-                    <Image x:Name="myBeatles" Source="Data/beatles.jpeg" 
-                   Height="130" Width="100" RenderOptions.BitmapScalingMode="HighQuality" Opacity="0.5"/>
-                    <Button.BorderBrush>
-                        <SolidColorBrush Color="AliceBlue" Opacity="0.5">
-                        </SolidColorBrush>
-                    </Button.BorderBrush>
+                <Button Style="{StaticResource ButtonStyle}">
                     <Button.RenderTransform>
                         <TransformGroup>
                             <TranslateTransform X="-70" Y="60"/>
                             <ScaleTransform ScaleX="0.9" ScaleY="0.9"/>
                         </TransformGroup>
                     </Button.RenderTransform>
+                    <Image x:Name="myBeatles" Source="Data/beatles.jpeg" Style="{StaticResource ImageStyle}"/>
                 </Button>
 
-                <Button Height="140" Width="105" BorderThickness="5" VerticalAlignment="Center">
-                    <Image x:Name="myQueen" Source="Data/queen.jpeg" 
-                   Height="130" Width="100" RenderOptions.BitmapScalingMode="HighQuality" Opacity="0.5"/>
-                    <Button.BorderBrush>
-                        <SolidColorBrush Color="AliceBlue" Opacity="0.5">
-                        </SolidColorBrush>
-                    </Button.BorderBrush>
+                <Button Style="{StaticResource ButtonStyle}">
                     <Button.RenderTransform>
                         <TransformGroup>
                             <TranslateTransform X="-100" Y="60"/>
                             <ScaleTransform ScaleX="0.9" ScaleY="0.9"/>
                         </TransformGroup>
                     </Button.RenderTransform>
+                    <Image x:Name="myQueen" Source="Data/queen.jpeg" Style="{StaticResource ImageStyle}"/>
                 </Button>
             </UniformGrid>
         </StackPanel>
+        <TextBlock Canvas.Left="110" Canvas.Top="60" Style="{StaticResource TextBlockStyle}" Width="1055" Panel.ZIndex="37" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="{x:Null}" TextAlignment="Center" IsEnabled="False">
+            <TextBlock.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFB04B4B" Offset="1"/>
+                    <GradientStop Color="#FF1F4945" Offset="0.396"/>
+                    <GradientStop Color="#FF429D8B" Offset="0.719"/>
+                </LinearGradientBrush>
+            </TextBlock.Foreground><Run Text="The Man Who          Sold The World"/><Run/></TextBlock>
     </Canvas>
 </Window>
